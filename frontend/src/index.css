@@ -1,0 +1,1738 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Inter, system-ui, sans-serif;
+  color: #e8edf5;
+  background: #070b12;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  --bg: #070b12;
+  --panel: #0c121c;
+  --panel2: #101823;
+  --border: #1d2938;
+  --border-light: #263548;
+
+  --text: #edf2f8;
+  --muted: #7e8da1;
+  --dim: #536174;
+
+  --blue: #3b82f6;
+  --cyan: #22d3ee;
+  --green: #22c55e;
+  --yellow: #eab308;
+  --orange: #f97316;
+  --red: #ef4444;
+}
+
+body {
+  margin: 0;
+  min-width: 1200px;
+  background:
+    radial-gradient(circle at 80% 0%, rgba(37, 99, 235, .08), transparent 30%),
+    #070b12;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+  width: 248px;
+  min-width: 248px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 20;
+
+  background: #090e16;
+  border-right: 1px solid var(--border);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.brand {
+  height: 76px;
+  padding: 0 22px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.brandMark {
+  width: 36px;
+  height: 36px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 9px;
+  background: #12213a;
+  color: #60a5fa;
+
+  font-weight: 800;
+  border: 1px solid #1e3a5f;
+}
+
+.brandText {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+
+.brandSub {
+  font-size: 9px;
+  color: var(--muted);
+  margin-top: 2px;
+  letter-spacing: .12em;
+}
+
+.nav {
+  padding: 18px 12px;
+  overflow-y: auto;
+}
+
+.navSection {
+  padding: 12px 12px 7px;
+  font-size: 9px;
+  color: #465467;
+  font-weight: 700;
+  letter-spacing: .16em;
+}
+
+.navItem {
+  width: 100%;
+  border: 0;
+  background: transparent;
+
+  color: #7f8da0;
+
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  padding: 10px 12px;
+  margin-bottom: 3px;
+
+  border-radius: 7px;
+  text-align: left;
+
+  transition: .18s ease;
+}
+
+.navItem:hover {
+  color: #dce6f2;
+  background: #0e1723;
+}
+
+.navItem.active {
+  color: #f3f7fb;
+  background: #12213a;
+  box-shadow: inset 3px 0 0 #3b82f6;
+}
+
+.navIcon {
+  width: 18px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.sidebarBottom {
+  margin-top: auto;
+  padding: 15px;
+  border-top: 1px solid var(--border);
+}
+
+.operator {
+  padding: 12px;
+  background: #0c131d;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.operatorName {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.operatorRole {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+.online {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 10px;
+  font-size: 10px;
+  color: #7ee2a0;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 10px rgba(34,197,94,.5);
+}
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.main {
+  margin-left: 248px;
+  width: calc(100% - 248px);
+  min-height: 100vh;
+}
+
+.header {
+  height: 76px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 28px;
+
+  background: rgba(7,11,18,.94);
+  border-bottom: 1px solid var(--border);
+
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  backdrop-filter: blur(12px);
+}
+
+.pageTitle {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.pageSubtitle {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.systemStatus {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  color: #8de4a8;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.clock {
+  color: #8190a4;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+}
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.content {
+  padding: 24px 28px 40px;
+  max-width: 1800px;
+}
+
+.sectionTitle {
+  margin: 0 0 14px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: #9aa8b9;
+}
+
+.sectionTitle span {
+  color: #526174;
+  margin-left: 8px;
+}
+
+/* =========================================================
+   KPI
+========================================================= */
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.metric {
+  min-height: 105px;
+  padding: 16px;
+
+  background: linear-gradient(145deg, #0d141e, #0a1018);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.metric::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: #1c2d43;
+}
+
+.metricLabel {
+  font-size: 9px;
+  color: #68778a;
+  text-transform: uppercase;
+  letter-spacing: .13em;
+}
+
+.metricValue {
+  margin-top: 10px;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: -.03em;
+}
+
+.metricMeta {
+  margin-top: 6px;
+  font-size: 9px;
+  color: #68778a;
+}
+
+/* =========================================================
+   PANELS
+========================================================= */
+
+.panel {
+  background: #0c121b;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  overflow: hidden;
+}
+
+.panelHeader {
+  min-height: 48px;
+  padding: 0 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.panelTitle {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+.panelMeta {
+  font-size: 9px;
+  color: var(--muted);
+}
+
+.panelBody {
+  padding: 16px;
+}
+
+/* =========================================================
+   DASHBOARD MAP
+========================================================= */
+
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 330px;
+  gap: 16px;
+}
+
+.mapPanel {
+  min-height: 540px;
+}
+
+.map {
+  position: relative;
+  min-height: 490px;
+  overflow: hidden;
+
+  background:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px),
+    #09121b;
+
+  background-size: 42px 42px;
+}
+
+.map::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(30deg, transparent 48%, rgba(48,85,111,.25) 49%, transparent 50%),
+    linear-gradient(-30deg, transparent 48%, rgba(48,85,111,.2) 49%, transparent 50%);
+}
+
+.mapRoad {
+  position: absolute;
+  height: 5px;
+  background: #263746;
+  border-radius: 5px;
+  opacity: .9;
+}
+
+.mapRoad.r1 {
+  width: 75%;
+  left: 10%;
+  top: 48%;
+  transform: rotate(-17deg);
+}
+
+.mapRoad.r2 {
+  width: 65%;
+  left: 22%;
+  top: 66%;
+  transform: rotate(14deg);
+}
+
+.mapRoad.r3 {
+  width: 50%;
+  left: 30%;
+  top: 27%;
+  transform: rotate(70deg);
+}
+
+.mapRoad.r4 {
+  width: 40%;
+  left: 4%;
+  top: 71%;
+  transform: rotate(-55deg);
+}
+
+.mapMarker {
+  position: absolute;
+  z-index: 3;
+
+  width: 30px;
+  height: 30px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  border: 2px solid #071019;
+  box-shadow: 0 0 0 4px rgba(255,255,255,.06);
+}
+
+.markerCritical {
+  background: #ef4444;
+  color: white;
+}
+
+.markerWarning {
+  background: #f97316;
+  color: white;
+}
+
+.markerVictim {
+  background: #22c55e;
+  color: #03150a;
+}
+
+.markerDrone {
+  background: #38bdf8;
+  color: #03111a;
+}
+
+.marker1 {
+  left: 27%;
+  top: 39%;
+}
+
+.marker2 {
+  left: 57%;
+  top: 29%;
+}
+
+.marker3 {
+  left: 69%;
+  top: 62%;
+}
+
+.marker4 {
+  left: 43%;
+  top: 72%;
+}
+
+.mapRoute {
+  position: absolute;
+  left: 22%;
+  top: 56%;
+  width: 51%;
+  height: 3px;
+  background: #38bdf8;
+  transform: rotate(-12deg);
+  box-shadow: 0 0 12px rgba(56,189,248,.6);
+}
+
+.mapLegend {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+
+  display: flex;
+  gap: 15px;
+
+  padding: 9px 12px;
+
+  background: rgba(7,12,18,.9);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+
+  font-size: 9px;
+  color: #9aa8b9;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.legendDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+/* =========================================================
+   ALERTS
+========================================================= */
+
+.alertPanel {
+  min-height: 540px;
+}
+
+.alert {
+  padding: 14px 0;
+  border-bottom: 1px solid #17212d;
+}
+
+.alert:last-child {
+  border-bottom: 0;
+}
+
+.alertTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alertBadge {
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  padding: 4px 7px;
+  border-radius: 4px;
+}
+
+.critical {
+  color: #ff9292;
+  background: rgba(239,68,68,.1);
+  border: 1px solid rgba(239,68,68,.2);
+}
+
+.high {
+  color: #ffb276;
+  background: rgba(249,115,22,.1);
+  border: 1px solid rgba(249,115,22,.2);
+}
+
+.medium {
+  color: #f5d36b;
+  background: rgba(234,179,8,.08);
+  border: 1px solid rgba(234,179,8,.15);
+}
+
+.alertTime {
+  color: #526174;
+  font-size: 9px;
+}
+
+.alertName {
+  margin-top: 9px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.alertLocation {
+  margin-top: 4px;
+  font-size: 9px;
+  color: var(--muted);
+}
+
+/* =========================================================
+   LOWER DASHBOARD
+========================================================= */
+
+.dashboardLower {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.aiAssessment {
+  line-height: 1.7;
+  color: #a8b5c5;
+  font-size: 11px;
+}
+
+.aiHighlight {
+  margin-top: 12px;
+  padding: 11px;
+
+  background: #0a1622;
+  border-left: 2px solid #3b82f6;
+
+  font-size: 10px;
+  color: #9fb0c4;
+}
+
+/* =========================================================
+   PAGE LAYOUT
+========================================================= */
+
+.pageGrid {
+  display: grid;
+  grid-template-columns: 1fr 330px;
+  gap: 16px;
+}
+
+.pageGridFull {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.twoColumn {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* =========================================================
+   INCIDENT CARDS
+========================================================= */
+
+.incidentGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.incidentCard {
+  padding: 17px;
+
+  background: #0b131d;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+
+  transition: .18s ease;
+}
+
+.incidentCard:hover {
+  border-color: #30455c;
+  transform: translateY(-1px);
+}
+
+.incidentTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.incidentId {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  color: #6f7f92;
+}
+
+.incidentType {
+  margin-top: 14px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.incidentLocation {
+  margin-top: 5px;
+  color: #718196;
+  font-size: 10px;
+}
+
+.confidence {
+  margin-top: 17px;
+}
+
+.confidenceHead {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  color: #738298;
+}
+
+.confidenceValue {
+  color: #b9c8d9;
+  font-weight: 700;
+}
+
+.progress {
+  height: 4px;
+  margin-top: 7px;
+  background: #17222e;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: inherit;
+  background: #3b82f6;
+}
+
+/* =========================================================
+   VICTIMS
+========================================================= */
+
+.victimGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.victimCard {
+  padding: 17px;
+  background: #0b131d;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.victimStatus {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ef4444;
+}
+
+.victimHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.victimId {
+  font-family: "JetBrains Mono", monospace;
+  color: #6f7f92;
+  font-size: 9px;
+}
+
+.victimName {
+  margin-top: 15px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.victimData {
+  margin-top: 12px;
+  display: grid;
+  gap: 7px;
+}
+
+.dataLine {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+}
+
+.dataLine span:first-child {
+  color: #59697b;
+}
+
+.dataLine span:last-child {
+  color: #9caabd;
+}
+
+/* =========================================================
+   DRONES
+========================================================= */
+
+.droneGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.droneCard {
+  padding: 18px;
+  background: #0b131d;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.droneVisual {
+  height: 150px;
+
+  display: grid;
+  place-items: center;
+
+  background:
+    radial-gradient(circle, rgba(59,130,246,.09), transparent 55%),
+    #09111a;
+
+  border-radius: 7px;
+  margin-bottom: 15px;
+
+  color: #3b82f6;
+  font-size: 40px;
+}
+
+.droneName {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.droneModel {
+  color: #607084;
+  font-size: 9px;
+  margin-top: 4px;
+}
+
+.droneStats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.droneStat {
+  padding: 8px;
+  background: #0e1721;
+  border-radius: 5px;
+}
+
+.droneStatLabel {
+  font-size: 8px;
+  color: #59697b;
+}
+
+.droneStatValue {
+  font-size: 10px;
+  margin-top: 3px;
+}
+
+/* =========================================================
+   DETECTION
+========================================================= */
+
+.cameraGrid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 16px;
+}
+
+.camera {
+  min-height: 600px;
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(circle at center, rgba(30,64,175,.08), transparent 45%),
+    #050a10;
+
+  border: 1px solid var(--border);
+  border-radius: 9px;
+}
+
+.cameraGridLines {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+
+  background-size: 45px 45px;
+}
+
+.scanLine {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(34,211,238,.6);
+  box-shadow: 0 0 10px rgba(34,211,238,.5);
+  animation: scan 4s linear infinite;
+}
+
+@keyframes scan {
+  from { top: 0; }
+  to { top: 100%; }
+}
+
+.detectionBox {
+  position: absolute;
+  border: 1px solid #22d3ee;
+  background: rgba(34,211,238,.04);
+}
+
+.detectionLabel {
+  position: absolute;
+  left: -1px;
+  top: -20px;
+  background: #22d3ee;
+  color: #031217;
+  padding: 4px 6px;
+  font-size: 8px;
+  font-weight: 800;
+}
+
+.cameraOverlay {
+  position: absolute;
+  inset: 15px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cameraTop {
+  display: flex;
+  justify-content: space-between;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  color: #74869b;
+}
+
+.cameraBottom {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  color: #64758a;
+}
+
+/* =========================================================
+   ROUTES
+========================================================= */
+
+.routeLayout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 16px;
+}
+
+.routeMap {
+  min-height: 560px;
+}
+
+.routeOption {
+  padding: 16px;
+  margin-bottom: 10px;
+
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: #0b131d;
+}
+
+.routeOption.active {
+  border-color: #315a8c;
+  background: #0c1825;
+}
+
+.routeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.routeName {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.routeTime {
+  font-family: "JetBrains Mono", monospace;
+  color: #60a5fa;
+  font-size: 11px;
+}
+
+.routeDetails {
+  display: flex;
+  gap: 18px;
+  margin-top: 10px;
+
+  color: #67788c;
+  font-size: 9px;
+}
+
+/* =========================================================
+   COVERAGE
+========================================================= */
+
+.coverageGrid {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 30px;
+}
+
+.coverageCircle {
+  width: 190px;
+  height: 190px;
+
+  margin: auto;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(circle, #0b131d 57%, transparent 58%),
+    conic-gradient(#3b82f6 0 78%, #182330 78% 100%);
+}
+
+.coverageNumber {
+  font-size: 35px;
+  font-weight: 800;
+}
+
+.coverageBars {
+  display: grid;
+  gap: 16px;
+}
+
+.coverageBar {
+  display: grid;
+  gap: 7px;
+}
+
+.coverageBarTop {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  color: #738298;
+}
+
+.bar {
+  height: 6px;
+  background: #17222e;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  background: #3b82f6;
+}
+
+/* =========================================================
+   AI
+========================================================= */
+
+.aiLayout {
+  display: grid;
+  grid-template-columns: 1fr 310px;
+  gap: 16px;
+}
+
+.aiChat {
+  min-height: 560px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.message {
+  max-width: 78%;
+  padding: 11px 13px;
+  border-radius: 7px;
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.message.ai {
+  background: #101b28;
+  border: 1px solid #1b2a3a;
+  color: #9eafc3;
+  align-self: flex-start;
+}
+
+.message.user {
+  background: #16335a;
+  color: #c9dcf2;
+  align-self: flex-end;
+}
+
+.chatInput {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.chatInput input {
+  flex: 1;
+  background: #080e15;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px;
+  color: white;
+  outline: none;
+}
+
+.primaryButton {
+  border: 0;
+  border-radius: 6px;
+  padding: 0 16px;
+
+  background: #2563eb;
+  color: white;
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.primaryButton:hover {
+  background: #3474ed;
+}
+
+/* =========================================================
+   SIMULATION
+========================================================= */
+
+.simulationGrid {
+  display: grid;
+  grid-template-columns: 330px 1fr;
+  gap: 16px;
+}
+
+.simulationForm {
+  display: grid;
+  gap: 14px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 9px;
+  color: #68788c;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.field input,
+.field select {
+  background: #080e15;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: #dbe5f0;
+  padding: 10px;
+  outline: none;
+}
+
+/* =========================================================
+   REPORTS
+========================================================= */
+
+.reportGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.report {
+  padding: 18px;
+  background: #0b131d;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.reportIcon {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  background: #122039;
+  border-radius: 7px;
+  color: #60a5fa;
+}
+
+.reportTitle {
+  margin-top: 15px;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.reportMeta {
+  margin-top: 6px;
+  color: #617186;
+  font-size: 9px;
+}
+
+/* =========================================================
+   HEALTH
+========================================================= */
+
+.healthGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.health {
+  padding: 16px;
+  background: #0b131d;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.healthTop {
+  display: flex;
+  justify-content: space-between;
+}
+
+.healthName {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.healthDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px rgba(34,197,94,.4);
+}
+
+.healthValue {
+  margin-top: 15px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  color: #8494a8;
+}
+
+/* =========================================================
+   TABLE — ONLY FOR DETAILED DATA
+========================================================= */
+
+.table {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tableHead,
+.tableRow {
+  display: grid;
+  grid-template-columns: 90px 1.5fr 1fr 100px 100px 100px;
+  align-items: center;
+}
+
+.tableHead {
+  min-height: 40px;
+  background: #0e1721;
+  color: #59697b;
+
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+.tableRow {
+  min-height: 58px;
+  border-top: 1px solid #17212d;
+  font-size: 10px;
+  color: #a6b3c3;
+}
+
+.tableHead > div,
+.tableRow > div {
+  padding: 0 12px;
+}
+
+.tableRow:hover {
+  background: #0d1620;
+}
+
+/* =========================================================
+   EVENT STREAM
+========================================================= */
+
+.eventList {
+  display: grid;
+}
+
+.event {
+  padding: 12px 0;
+  border-bottom: 1px solid #17212d;
+}
+
+.event:last-child {
+  border-bottom: 0;
+}
+
+.eventTop {
+  display: flex;
+  justify-content: space-between;
+}
+
+.eventType {
+  font-size: 9px;
+  font-weight: 700;
+  color: #90a0b4;
+}
+
+.eventTime {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 8px;
+  color: #4f5e70;
+}
+
+.eventText {
+  margin-top: 5px;
+  color: #738298;
+  font-size: 9px;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1400px) {
+  .metrics {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .dashboardGrid,
+  .cameraGrid,
+  .routeLayout,
+  .aiLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .alertPanel {
+    min-height: auto;
+  }
+}
+
+/* =========================================================
+   RESQ-OPS SPACING PATCH
+   Keep original dark-blue theme, improve readability
+========================================================= */
+
+.content {
+  padding: 28px 32px 50px;
+}
+
+.panel {
+  border-radius: 10px;
+}
+
+.panelBody {
+  padding: 20px;
+}
+
+.panelHeader {
+  min-height: 54px;
+  padding: 0 20px;
+}
+
+/* More breathing room on all grids */
+
+.dashboardGrid {
+  gap: 20px;
+}
+
+.dashboardLower {
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.pageGrid {
+  gap: 20px;
+}
+
+.twoColumn {
+  gap: 20px;
+}
+
+.incidentGrid {
+  grid-template-columns: repeat(2, minmax(360px, 1fr));
+  gap: 16px;
+}
+
+/* =========================================================
+   INCIDENT / HAZARD CARDS
+========================================================= */
+
+.incidentCard {
+  padding: 20px;
+  min-height: 190px;
+}
+
+.incidentTop {
+  margin-bottom: 4px;
+}
+
+.incidentType {
+  font-size: 15px;
+  margin-top: 16px;
+  line-height: 1.4;
+}
+
+.incidentLocation {
+  font-size: 10px;
+  margin-top: 7px;
+}
+
+/* information should never be crammed */
+
+.incidentInfo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 17px;
+}
+
+.incidentInfoItem {
+  padding: 10px 11px;
+  background: #0e1722;
+  border: 1px solid #182534;
+  border-radius: 6px;
+}
+
+.incidentInfoLabel {
+  display: block;
+  font-size: 8px;
+  color: #607086;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 5px;
+}
+
+.incidentInfoValue {
+  display: block;
+  font-size: 10px;
+  color: #b9c6d5;
+  font-weight: 600;
+}
+
+/* =========================================================
+   DASHBOARD METRICS
+========================================================= */
+
+.metrics {
+  gap: 14px;
+}
+
+.metric {
+  min-height: 112px;
+  padding: 18px;
+}
+
+.metricValue {
+  font-size: 27px;
+}
+
+/* =========================================================
+   MAP
+========================================================= */
+
+.mapPanel {
+  min-height: 570px;
+}
+
+.map {
+  min-height: 515px;
+}
+
+/* =========================================================
+   ALERTS
+========================================================= */
+
+.alertPanel {
+  min-height: 570px;
+}
+
+.alert {
+  padding: 16px 2px;
+}
+
+.alertName {
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.alertLocation {
+  margin-top: 6px;
+}
+
+/* =========================================================
+   VICTIMS
+========================================================= */
+
+.victimGrid {
+  grid-template-columns: repeat(2, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.victimCard {
+  padding: 20px;
+  min-height: 190px;
+}
+
+.victimData {
+  margin-top: 16px;
+  gap: 10px;
+}
+
+.dataLine {
+  padding-bottom: 7px;
+  border-bottom: 1px solid #16222f;
+}
+
+/* =========================================================
+   DRONES
+========================================================= */
+
+.droneGrid {
+  grid-template-columns: repeat(3, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.droneCard {
+  padding: 20px;
+}
+
+.droneVisual {
+  height: 165px;
+}
+
+/* =========================================================
+   DETECTION
+========================================================= */
+
+.cameraGrid {
+  grid-template-columns: minmax(0, 1fr) 350px;
+  gap: 20px;
+}
+
+.camera {
+  min-height: 620px;
+}
+
+/* =========================================================
+   ROUTES
+========================================================= */
+
+.routeLayout {
+  grid-template-columns: minmax(0, 1fr) 390px;
+  gap: 20px;
+}
+
+.routeOption {
+  padding: 18px;
+  margin-bottom: 12px;
+}
+
+.routeDetails {
+  gap: 25px;
+  margin-top: 12px;
+}
+
+/* =========================================================
+   AI
+========================================================= */
+
+.aiLayout {
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 20px;
+}
+
+.message {
+  max-width: 72%;
+  padding: 13px 15px;
+}
+
+/* =========================================================
+   SIMULATION
+========================================================= */
+
+.simulationGrid {
+  grid-template-columns: 350px minmax(0, 1fr);
+  gap: 20px;
+}
+
+/* =========================================================
+   REPORTS
+========================================================= */
+
+.reportGrid {
+  gap: 16px;
+}
+
+.report {
+  padding: 20px;
+  min-height: 155px;
+}
+
+/* =========================================================
+   HEALTH
+========================================================= */
+
+.healthGrid {
+  gap: 16px;
+}
+
+.health {
+  padding: 20px;
+  min-height: 130px;
+}
+
+/* =========================================================
+   DETAILED TABLE
+   Only used when table is genuinely useful
+========================================================= */
+
+.table {
+  border-radius: 9px;
+}
+
+.tableHead {
+  min-height: 46px;
+}
+
+.tableRow {
+  min-height: 70px;
+}
+
+.tableHead > div,
+.tableRow > div {
+  padding: 0 16px;
+}
+
+/* =========================================================
+   EVENT STREAM
+========================================================= */
+
+.event {
+  padding: 14px 2px;
+}
+
+.eventText {
+  line-height: 1.5;
+}
+
+/* =========================================================
+   MOBILE / SMALL LAPTOP
+========================================================= */
+
+@media (max-width: 1500px) {
+
+  .content {
+    padding: 24px;
+  }
+
+  .metrics {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .dashboardGrid {
+    grid-template-columns: minmax(0, 1fr) 310px;
+  }
+
+  .incidentGrid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (max-width: 1250px) {
+
+  .sidebar {
+    width: 220px;
+    min-width: 220px;
+  }
+
+  .main {
+    margin-left: 220px;
+    width: calc(100% - 220px);
+  }
+
+  .dashboardGrid,
+  .dashboardLower,
+  .pageGrid,
+  .cameraGrid,
+  .routeLayout,
+  .aiLayout,
+  .simulationGrid {
+    grid-template-columns: 1fr;
+  }
+
+}

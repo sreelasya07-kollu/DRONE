@@ -10,7 +10,9 @@ import {
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "./index.css";
-
+import Coverage from "./pages/Coverage";
+import ResqAI from "./pages/ResqAI";
+import Reports from "./pages/Reports";
 
 const API_BASE = "http://localhost:8000";
 
@@ -189,7 +191,7 @@ function Sidebar({ page, setPage }) {
 
       <div className="systemStatus">
         <span className="liveIndicator" />
-        <span>SYSTEM OPERATIONAL</span>
+        
       </div>
 
       <div className="navLabel">OPERATIONS</div>
@@ -222,14 +224,12 @@ function Sidebar({ page, setPage }) {
           <Progress value="96%" />
 
           <div className="connectionMeta">
-            <span>LATENCY</span>
+
             <span>24 ms</span>
           </div>
         </div>
 
-        <div className="version">
-          RESQ-OPS v1.0.0
-        </div>
+        
 
       </div>
 
@@ -251,7 +251,7 @@ function Header({ page }) {
 
       <div>
         <div className="breadcrumb">
-          COMMAND / {title.toUpperCase()}
+
         </div>
 
         <h1>{title}</h1>
@@ -260,16 +260,14 @@ function Header({ page }) {
       <div className="headerRight">
 
         <div className="headerTime">
-          <span>LOCAL TIME</span>
-          <strong>{new Date().toLocaleTimeString()}</strong>
         </div>
 
         <div className="operator">
-          <div className="operatorAvatar">OP</div>
+          
 
           <div>
-            <strong>OPERATOR</strong>
-            <span>COMMAND UNIT</span>
+            
+            
           </div>
         </div>
 
@@ -2210,20 +2208,6 @@ export default function App() {
 
   const [backendOnline, setBackendOnline] = useState(false);
 
-  const [clock, setClock] = useState(
-    new Date().toLocaleTimeString()
-  );
-
-  useEffect(() => {
-
-    const timer = setInterval(() => {
-      setClock(new Date().toLocaleTimeString());
-    }, 1000);
-
-    return () => clearInterval(timer);
-
-  }, []);
-
   useEffect(() => {
     const handler = () => setPage("routes");
     window.addEventListener("resq-route-victim", handler);
@@ -2303,12 +2287,6 @@ export default function App() {
         <div className="backendStatus">
 
           <span className={backendOnline ? "online" : "offline"} />
-
-          BACKEND {backendOnline ? "CONNECTED" : "DEMO MODE"}
-
-          <span className="statusClock">
-            {clock}
-          </span>
 
         </div>
 

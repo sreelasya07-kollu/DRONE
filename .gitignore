@@ -37,3 +37,13 @@ archive/
 
 # YOLO/cache
 *.cache
+
+# Local backup files
+*.backup.py
+*.before-all-changes.py
+*.before-all-changes.jsx
+*.before-integration.jsx
+*.black-screen.jsx
+*.backup.jsx
+*.backup-before-map.jsx
+*.backup-before-full-update.jsx

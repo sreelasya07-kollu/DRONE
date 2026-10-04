@@ -111,9 +111,7 @@ export default function Sidebar() {
       </div>
 
       <div className="system-status">
-        <span className="status-dot"></span>
-        SYSTEM OPERATIONAL
-      </div>
+        <span className="status-dot">
 
       <nav>
         {menu.map((section) => (
@@ -149,9 +147,7 @@ export default function Sidebar() {
           SECURE NETWORK
         </div>
 
-        <div className="version">
-          RESQ-OPS v1.0
-        </div>
+        
       </div>
 
     </aside>

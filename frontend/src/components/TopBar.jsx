@@ -29,17 +29,6 @@ export default function TopBar() {
           <Bell size={19} />
         </button>
 
-        <div className="operator">
-          <div className="operator-icon">
-            <ShieldCheck size={18} />
-          </div>
-
-          <div>
-            <strong>COMMANDER</strong>
-            <small>CONTROL ROOM</small>
-          </div>
-        </div>
-
       </div>
 
     </header>

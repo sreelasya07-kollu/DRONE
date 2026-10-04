@@ -3,7 +3,7 @@ from fastapi import (
     WebSocket,
     WebSocketDisconnect
 )
-
+from app.routes.operations import router as operations_router
 from fastapi.middleware.cors import (
     CORSMiddleware
 )
@@ -69,7 +69,7 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-
+app.include_router(operations_router)
 app.include_router(
     health.router
 )
